@@ -9,9 +9,11 @@ Some nice mac tools. Not mentioning work-related docker information.
 * [iTerm2](https://iterm2.com): Super flexible terminal with lots of nice-to-haves.
 * [Homebrew](https://brew.sh): Package management
 
+Specific work-environment related package requirements for getting the system up and running can be found on our internal docs.
+
 # Creating a namespace
 
-Assuming you have an instance of IRIS running somewhere, navigate to the management portal in your browser.
+Assuming you have an instance of IRIS running somewhere, navigate to the management portal in your browser. I can't tell you what your IRIS webserver is :~)
 
 ```
 System Administration
@@ -46,7 +48,7 @@ Containing:
 * Intersystems ObjectScript: `intersystems-community.vscode-objectscript`
 * Intersystems Server Manager: `intersystems-community.servermanager`
 
-We need to add our server details to the extension. Select IRIS from the left panel and add a server following the VSCode prompts (your settings will vary depending on server/container):
+We need to add our server details to the extension. Select Intersystems from the VSCode left panel and add a server (the plus button, next to "servers") following the prompts (your settings will vary depending on server/container):
 
 ```
 Name of new server definition: free name choice, better to keep it simple
