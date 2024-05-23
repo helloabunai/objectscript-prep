@@ -107,7 +107,7 @@ Class example.hello2 Extends %RegisteredObject
 
     Parameter GREETING = "HelloParameter";
 
-    ClassMethod SeeGreeting()
+    ClassMethod SeeParameter()
     {
         write ..#GREETING , !
     }
@@ -158,7 +158,7 @@ Properties are specific to each object/instantiation of the class.
 
 Parameters in Objectscript are class-level constants (note the upper-case of the parameter name). They are used to define static values that are not tied to any specific instantiation of the class, but are constant across all instantiations. 
 
-## SeeGreeting()
+## SeeParameter()
 
 This example ClassMethod writes the value of our class-parameter 'GREETING', which is accessed in Objectscript with the syntax `..#PARAM` (akin to `this` in other programming languages e.g. python/js/java)
 
