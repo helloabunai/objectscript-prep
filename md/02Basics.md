@@ -11,7 +11,7 @@ iris terminal iris -U NAMESPACE_HERE
 
 Note the command `iris terminal` should be executed within your docker container/dev server.
 
-You'll now be active in a IRIS terminal session, able to access functions etc from your compiled *.cls code files.
+You'll now be active in a IRIS terminal session, able to access methods/classes etc from your compiled *.cls code files.
 
 # 1. Simple Objectscript file
 
@@ -138,9 +138,11 @@ The class `example.hello2` differs from the prior example in a few ways. The cla
 
 It contains ClassMethods and Methods, which have important distinctions. It also contains two further declarations: a `Property` and a `Parameter`.
 
+A few notes on Methods, ClassMethods, Properties and Parameters:
+
 ### Methods 
 
-Methods are used for instance-specific operations and can access and modify the properties of the instance they belong to.
+Methods are used for instance-specific operations and can access and modify the properties of the instance/object they belong to.
 
 ### ClassMethods 
 
@@ -158,13 +160,13 @@ Parameters in Objectscript are class-level constants (note the upper-case of the
 
 ## SeeGreeting()
 
-This ClassMethod writes the value of our class-parameter 'GREETING', which is accessed in Objectscript with the syntax `..#PARAM` (akin to `this` in other programming languages e.g. python/js/java)
+This example ClassMethod writes the value of our class-parameter 'GREETING', which is accessed in Objectscript with the syntax `..#PARAM` (akin to `this` in other programming languages e.g. python/js/java)
 
 It is then appended with a newline, with `, !` as before. Note that because this is a `ClassMethod` and not a `Method`, it can access the static class parameter `GREETING`.
 
 ## SeeProperty()
 
-This Method must be called by an instatiation of the class / from an object. This is done by invoking the `%New()` method which we inherit from our class extension. The method `%New()` has a call-back `OnNew` which we can customise, and will explain later.
+This example Method must be called by an instatiation of the class / from an object. This is done by invoking the `%New()` method which we inherit from our class extension. The method `%New()` has a call-back `OnNew` which we can customise, and will explain in the next segment.
 
 ```
 set eg_object=##class(example.hello2).%New()
@@ -193,6 +195,8 @@ Method %OnNew(name As %String = "") As %Status
 
 This callback always expects a return type of `%Status`. A status is returned with the prefix `$$$`, as seen in `$$$OK`.
 
+[See here for more information on possible Statuses.](https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=GCOS_status)
+
 In this callback, we pass an argument `name` as a string, with a blank default value. Within the method, we test for the name being not blank. Negative testing is not `!=` but instead `'=`. If this evaluates as true, we then set the property of this object to our current value of `name`.
 
 ```
@@ -207,7 +211,7 @@ In addition to the output from seeProperty, you can also see the output of the w
 
 # Useful commands
 
-* zwrite
+* zwrite object_here
 ```
 zwrite namedExample
 namedExample=1@example.hello2  ; <OREF>
@@ -219,5 +223,7 @@ namedExample=1@example.hello2  ; <OREF>
 |             (Name) = "inputName"
 +-----------------------------------------------------
 ```
+
+* kill : wipes all stored definitions from the current session
 
 ~~ TODO add more ~~
